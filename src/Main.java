@@ -10,7 +10,6 @@ public class Main {
         task6();
         task7();
         task8();
-
         task9();
 
 
@@ -30,18 +29,18 @@ public class Main {
           за 200 лет до текущего (из созданной ранее переменной) в качестве
           старта и 100 лет после в качестве завершения периода расчета.*/
         System.out.println("Задание 3-1");
+        // понял свою ошибку "подгона"  циклов)) тсправил как мне кажется не плохо выглядит
         int cycleComet = 79;
         int yearNow = 2022;
         int ferstYearBefore2022 = 0;
         while (ferstYearBefore2022 <yearNow - 200) {
             ferstYearBefore2022 = ferstYearBefore2022 + cycleComet ;
         }
-        for (int i = 1; i<=3 ; i++ ) {
+        while (ferstYearBefore2022 <= yearNow + 100) {
             System.out.println(ferstYearBefore2022);
-            ferstYearBefore2022 =ferstYearBefore2022 + cycleComet;
-
+            ferstYearBefore2022 += cycleComet;
         }
-
+        System.out.println();
     }
 
     private static void task9() {
@@ -66,12 +65,15 @@ public class Main {
         В нашем месяце 31 день. В результате у вас должно вывестись
         от 4 до 5 сообщений с напоминаниями по разным датам.*/
         System.out.println("Задание 2-4");
+        //смешную ошибку с 0 допустил, нужен java тестировщик
+        // что касается 31 дня, я сделал универсальный код для всех случаев, если применять
+        //к нашим условиям ни кто не мешает вбивать 31))
         System.out.println("Введите какой по счету день недели первая пятница в этом месяце");
         Scanner day = new Scanner(System.in);
         int friday = day.nextInt() ; // определяем какой по счету день недели пятница
         System.out.println("Сколько дней в месяце");
         int daysInMonth = day.nextInt();
-        if ( friday < 0 || friday > 7 || daysInMonth < 28 || daysInMonth >31) {
+        if ( friday < 1 || friday > 7 || daysInMonth < 28 || daysInMonth >31) {
             System.out.println("Вы в школе учились? или в носу ковырялись?");
         } else {
             for (; friday <= daysInMonth; friday = friday + 7) {
@@ -90,14 +92,14 @@ public class Main {
          Василию сумму его накоплений за следующие каждые полгода в течение
           9 лет.*/
         System.out.println("Задание 2-3");
+        //поправил
         int ratePerMonthPercent = 7;
-        int contributionVasilyPerMonth = 15_000;
-        int contributionVasily = 0;
+        int contributionVasily = 15_000;
         int month = 0;
         int accumulationInterval = 9 * 12;
         while (month != accumulationInterval) {
             month++;
-            contributionVasily = contributionVasily + contributionVasilyPerMonth + contributionVasily*ratePerMonthPercent/100;
+            contributionVasily += contributionVasily*ratePerMonthPercent/100;
             if (month% 6 == 0 ) {
                 System.out.printf("%d месяц, сумма накоплений %d", month, contributionVasily);
                 System.out.println();
@@ -111,14 +113,14 @@ public class Main {
         не все месяцы подряд, а только каждый шестой. Должны быть видны
         накопления за 6, 12, 18, 24 и далее месяцы. */
         System.out.println("Задание 2-2");
+        //поправил
         int ratePerMonthPercent = 7;
-        int contributionVasilyPerMonth = 15_000;
-        int contributionVasily = 0;
+        int contributionVasily = 15_000;
         int purposeOfTheContribution = 12_000_000;
         int month = 0;
         while (contributionVasily<=purposeOfTheContribution) {
             month++;
-            contributionVasily = contributionVasily + contributionVasilyPerMonth + contributionVasily*ratePerMonthPercent/100;
+            contributionVasily += contributionVasily*ratePerMonthPercent/100;
             if (month% 6 == 0 ) {
                 System.out.printf("%d месяц, сумма накоплений %d", month, contributionVasily);
                 System.out.println();
@@ -139,14 +141,14 @@ public class Main {
         Выведите в консоль результат программы с указанием суммы накоплений
         по каждому месяцу.*/
         System.out.println("Задание 2-1");
+        //разве так копят?))) исправляюсь с *= += , спасибо за замечания
         int ratePerMonthPercent = 7;
-        int contributionVasilyPerMonth = 15_000;
-        int contributionVasily = 0;
+        int contributionVasily = 15_000;
         int purposeOfTheContribution = 12_000_000;
         int month = 0;
         while (contributionVasily<=purposeOfTheContribution) {
             month++;
-            contributionVasily = contributionVasily + contributionVasilyPerMonth + contributionVasily*ratePerMonthPercent/100;
+            contributionVasily += contributionVasily*ratePerMonthPercent/100;
             System.out.printf("%d месяц, сумма накоплений %d", month, contributionVasily);
             System.out.println();
         }
